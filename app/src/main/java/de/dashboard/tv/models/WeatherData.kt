@@ -7,10 +7,3 @@ data class WeatherData(
     val condition: String,
     val precipitation: String
 )
-
-data class NewsItem(
-    val headline: String,
-    val source: String,
-    val time: String,
-    val category: String
-)

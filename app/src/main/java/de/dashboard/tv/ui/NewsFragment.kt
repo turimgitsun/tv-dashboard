@@ -71,10 +71,10 @@ class NewsFragment : Fragment() {
 
         class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             fun bind(news: NewsItem) {
-                view.findViewById<android.widget.TextView>(R.id.headlineText).text = news.headline
-                view.findViewById<android.widget.TextView>(R.id.sourceText).text = news.source
-                view.findViewById<android.widget.TextView>(R.id.timeText).text = news.time
-                view.findViewById<android.widget.TextView>(R.id.categoryText).text = news.category
+                itemView.findViewById<android.widget.TextView>(R.id.headlineText).text = news.headline
+                itemView.findViewById<android.widget.TextView>(R.id.sourceText).text = news.source
+                itemView.findViewById<android.widget.TextView>(R.id.timeText).text = news.time
+                itemView.findViewById<android.widget.TextView>(R.id.categoryText).text = news.category
             }
         }
     }

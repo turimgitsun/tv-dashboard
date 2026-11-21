@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_item_stock.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_stock.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_item_news.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_news.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_fragment_stocks.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_stocks.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_item_weather.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_weather.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_fragment_news.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_news.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-merged_res-33:/layout_fragment_weather.xml.flat",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_weather.xml"
+    }
+]

@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+id categoryText
+id changeText
+id conditionText
+id headlineText
+id iconText
+id nameText
+id precipText
+id priceText
+id progressBar
+id recyclerView
+id sourceText
+id symbolText
+id tabLayout
+id tempText
+id timeText
+id viewPager
+layout activity_main
+layout fragment_news
+layout fragment_stocks
+layout fragment_weather
+layout item_news
+layout item_stock
+layout item_weather
+style Theme.TvDashboard
