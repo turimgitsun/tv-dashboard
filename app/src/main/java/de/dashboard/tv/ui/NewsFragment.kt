@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +21,7 @@ class NewsFragment : Fragment() {
 
     private lateinit var adapter: NewsAdapter
     private lateinit var progressBar: ProgressBar
-
-    private val coroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,28 +29,26 @@ class NewsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_news, container, false)
 
         progressBar = view.findViewById(R.id.progressBar)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        adapter = NewsAdapter(emptyList()) {}
-        recyclerView.adapter = adapter
-        loadNews()
+        val rv = view.findViewById<RecyclerView>(R.id.recyclerView)
+        rv.layoutManager = LinearLayoutManager(requireContext())
+        adapter = NewsAdapter(emptyList())
+        rv.adapter = adapter
 
+        load()
         return view
     }
 
-    private fun loadNews() {
+    private fun load() {
         progressBar.visibility = View.VISIBLE
-
-        coroutineScope.launch {
-            val news = NewsRepository.getTopHeadlines("business")
+        scope.launch {
+            val items = NewsRepository.getTopHeadlines()
             progressBar.visibility = View.GONE
-            adapter.submitList(news)
+            adapter.submitList(items)
         }
     }
 
-    class NewsAdapter(
-        private var items: List<NewsItem>,
-        private val onClick: (NewsItem) -> Unit
-    ) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+    class NewsAdapter(private var items: List<NewsItem>) :
+        RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
         fun submitList(newItems: List<NewsItem>) {
             items = newItems
@@ -69,12 +67,12 @@ class NewsFragment : Fragment() {
             holder.bind(items[position])
         }
 
-        class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             fun bind(news: NewsItem) {
-                itemView.findViewById<android.widget.TextView>(R.id.headlineText).text = news.headline
-                itemView.findViewById<android.widget.TextView>(R.id.sourceText).text = news.source
-                itemView.findViewById<android.widget.TextView>(R.id.timeText).text = news.time
-                itemView.findViewById<android.widget.TextView>(R.id.categoryText).text = news.category
+                itemView.findViewById<TextView>(R.id.headlineText).text = news.headline
+                itemView.findViewById<TextView>(R.id.sourceText).text = news.source
+                itemView.findViewById<TextView>(R.id.timeText).text = news.time
+                itemView.findViewById<TextView>(R.id.categoryText).text = news.category
             }
         }
     }

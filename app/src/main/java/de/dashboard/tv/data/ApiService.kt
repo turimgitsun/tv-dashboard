@@ -24,5 +24,6 @@ data class Meta(
     val regularMarketPrice: Double? = null,
     val chartPreviousClose: Double? = null,
     val previousClose: Double? = null,
-    val regularMarketChangePercent: Double? = null
+    val regularMarketChangePercent: Double? = null,
+    val currency: String? = null
 )

@@ -1,44 +1,28 @@
 package de.dashboard.tv.data
 
+import de.dashboard.tv.models.StockQuote
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import de.dashboard.tv.models.StockQuote
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 object StockRepository {
 
-    private const val BASE_URL = "https://query1.finance.yahoo.com/"
+    private val api get() = RetrofitClient.apiService
 
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    private val apiService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
-    }
-
-    suspend fun getStock(symbol: String, name: String): StockQuote? = withContext(Dispatchers.IO) {
+    suspend fun getQuote(symbol: String, name: String): StockQuote? = withContext(Dispatchers.IO) {
         try {
-            val response = apiService.getStockChart(symbol)
-            val result = response.chart.result.firstOrNull()
-            val meta = result?.meta ?: return@withContext null
-            val price = meta.regularMarketPrice ?: meta.chartPreviousClose ?: 0.0
+            val response = api.getStockChart(symbol)
+            val meta = response.chart.result.firstOrNull()?.meta ?: return@withContext null
+            val price = meta.regularMarketPrice ?: meta.chartPreviousClose ?: return@withContext null
             val prevClose = meta.chartPreviousClose ?: meta.previousClose ?: price
-            val changePercent = if (prevClose > 0) ((price - prevClose) / prevClose * 100) else 0.0
-            val changeStr = if (changePercent >= 0) {
-                "+%.2f%%".format(changePercent)
-            } else {
-                "%.2f%%".format(changePercent)
-            }
+            val changeValue = if (prevClose > 0) (price - prevClose) / prevClose * 100.0 else 0.0
+            val change = if (changeValue >= 0) "+%.2f%%".format(changeValue) else "%.2f%%".format(changeValue)
             StockQuote(
                 symbol = symbol,
                 name = name,
                 price = price,
-                change = changeStr
+                change = change,
+                changeValue = changeValue,
+                currency = meta.currency ?: "USD"
             )
         } catch (e: Exception) {
             e.printStackTrace()

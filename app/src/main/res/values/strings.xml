@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Dashboard</string>
+    <string name="empty_watchlist">Noch keine Assets.\nTippe auf „+ Assets“, um deine Watchlist zu verwalten.</string>
+</resources>

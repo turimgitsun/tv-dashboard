@@ -1,37 +1,53 @@
 package de.dashboard.tv
 
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.button.MaterialButton
 import de.dashboard.tv.ui.NewsFragment
-import de.dashboard.tv.ui.StocksFragment
+import de.dashboard.tv.ui.PortfolioFragment
 import de.dashboard.tv.ui.WeatherFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var container: FrameLayout
+    private lateinit var navPortfolio: MaterialButton
+    private lateinit var navWeather: MaterialButton
+    private lateinit var navNews: MaterialButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        container = findViewById(R.id.fragmentContainer)
+        navPortfolio = findViewById(R.id.navPortfolio)
+        navWeather = findViewById(R.id.navWeather)
+        navNews = findViewById(R.id.navNews)
 
-        val fragments = listOf(
-            StocksFragment() to "Aktien & ETFs",
-            WeatherFragment() to "Wetter Berlin",
-            NewsFragment() to "News"
-        )
+        navPortfolio.setOnClickListener { select(navPortfolio, PortfolioFragment()) }
+        navWeather.setOnClickListener { select(navWeather, WeatherFragment()) }
+        navNews.setOnClickListener { select(navNews, NewsFragment()) }
 
-        viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount() = fragments.size
-            override fun createFragment(position: Int): Fragment = fragments[position].first
+        if (savedInstanceState == null) select(navPortfolio, PortfolioFragment())
+    }
+
+    private fun select(button: MaterialButton, fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+
+        val active = button
+        listOf(navPortfolio, navWeather, navNews).forEach { b ->
+            val selected = b === active
+            b.isSelected = selected
+            b.backgroundTintList = ColorStateList.valueOf(
+                if (selected) getColor(R.color.accent) else getColor(R.color.surface2)
+            )
+            b.setTextColor(
+                if (selected) getColor(android.R.color.black) else getColor(R.color.textPrimary)
+            )
         }
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = fragments[position].second
-        }.attach()
     }
 }

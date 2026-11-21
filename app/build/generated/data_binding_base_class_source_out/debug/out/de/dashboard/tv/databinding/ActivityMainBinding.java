@@ -4,13 +4,13 @@ package de.dashboard.tv.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import androidx.viewpager2.widget.ViewPager2;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.button.MaterialButton;
 import de.dashboard.tv.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -18,24 +18,33 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
-  public final TabLayout tabLayout;
+  public final FrameLayout fragmentContainer;
 
   @NonNull
-  public final ViewPager2 viewPager;
+  public final MaterialButton navNews;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull TabLayout tabLayout,
-      @NonNull ViewPager2 viewPager) {
+  @NonNull
+  public final MaterialButton navPortfolio;
+
+  @NonNull
+  public final MaterialButton navWeather;
+
+  private ActivityMainBinding(@NonNull LinearLayout rootView,
+      @NonNull FrameLayout fragmentContainer, @NonNull MaterialButton navNews,
+      @NonNull MaterialButton navPortfolio, @NonNull MaterialButton navWeather) {
     this.rootView = rootView;
-    this.tabLayout = tabLayout;
-    this.viewPager = viewPager;
+    this.fragmentContainer = fragmentContainer;
+    this.navNews = navNews;
+    this.navPortfolio = navPortfolio;
+    this.navWeather = navWeather;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -60,19 +69,32 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.tabLayout;
-      TabLayout tabLayout = ViewBindings.findChildViewById(rootView, id);
-      if (tabLayout == null) {
+      id = R.id.fragmentContainer;
+      FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, id);
+      if (fragmentContainer == null) {
         break missingId;
       }
 
-      id = R.id.viewPager;
-      ViewPager2 viewPager = ViewBindings.findChildViewById(rootView, id);
-      if (viewPager == null) {
+      id = R.id.navNews;
+      MaterialButton navNews = ViewBindings.findChildViewById(rootView, id);
+      if (navNews == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, tabLayout, viewPager);
+      id = R.id.navPortfolio;
+      MaterialButton navPortfolio = ViewBindings.findChildViewById(rootView, id);
+      if (navPortfolio == null) {
+        break missingId;
+      }
+
+      id = R.id.navWeather;
+      MaterialButton navWeather = ViewBindings.findChildViewById(rootView, id);
+      if (navWeather == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((LinearLayout) rootView, fragmentContainer, navNews,
+          navPortfolio, navWeather);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
