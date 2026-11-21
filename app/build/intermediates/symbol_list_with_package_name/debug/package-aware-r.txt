@@ -3147,6 +3147,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id cryptoMap
 id currentState
 id custom
 id customPanel
@@ -3318,6 +3319,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nameText
+id navHeatmap
 id navNews
 id navPortfolio
 id navWeather
@@ -3448,6 +3450,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id stockMap
 id stop
 id stretch
 id submenuarrow
@@ -3655,6 +3658,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_heatmap
 layout fragment_news
 layout fragment_portfolio
 layout fragment_stocks

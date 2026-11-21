@@ -4,19 +4,29 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NewsApiService {
-    @GET("v1/api.json")
-    suspend fun getFeed(@Query("rss_url") rssUrl: String): RssResponse
+    @GET("top-headlines")
+    suspend fun getTopHeadlines(
+        @Query("country") country: String = "de",
+        @Query("category") category: String = "business",
+        @Query("apiKey") apiKey: String
+    ): NewsApiResponse
 }
 
-data class RssResponse(
-    val status: String?,
-    val items: List<RssItem>?
+data class NewsApiResponse(
+    val status: String,
+    val totalResults: Int,
+    val articles: List<NewsArticle>
 )
 
-data class RssItem(
+data class NewsArticle(
     val title: String?,
-    val pubDate: String?,
-    val link: String?,
-    val author: String?,
-    val categories: List<String>?
+    val url: String?,
+    val urlToImage: String?,
+    val source: NewsSource,
+    val publishedAt: String?
+)
+
+data class NewsSource(
+    val id: String?,
+    val name: String?
 )

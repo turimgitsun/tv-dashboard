@@ -40,6 +40,22 @@
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/navHeatmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/surface2"
+            app:cornerRadius="12dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="Heatmap"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/navWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

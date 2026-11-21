@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
+import de.dashboard.tv.ui.HeatmapFragment
 import de.dashboard.tv.ui.NewsFragment
 import de.dashboard.tv.ui.PortfolioFragment
 import de.dashboard.tv.ui.WeatherFragment
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var container: FrameLayout
     private lateinit var navPortfolio: MaterialButton
+    private lateinit var navHeatmap: MaterialButton
     private lateinit var navWeather: MaterialButton
     private lateinit var navNews: MaterialButton
 
@@ -23,10 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         container = findViewById(R.id.fragmentContainer)
         navPortfolio = findViewById(R.id.navPortfolio)
+        navHeatmap = findViewById(R.id.navHeatmap)
         navWeather = findViewById(R.id.navWeather)
         navNews = findViewById(R.id.navNews)
 
         navPortfolio.setOnClickListener { select(navPortfolio, PortfolioFragment()) }
+        navHeatmap.setOnClickListener { select(navHeatmap, HeatmapFragment()) }
         navWeather.setOnClickListener { select(navWeather, WeatherFragment()) }
         navNews.setOnClickListener { select(navNews, NewsFragment()) }
 
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
         val active = button
-        listOf(navPortfolio, navWeather, navNews).forEach { b ->
+        listOf(navPortfolio, navHeatmap, navWeather, navNews).forEach { b ->
             val selected = b === active
             b.isSelected = selected
             b.backgroundTintList = ColorStateList.valueOf(

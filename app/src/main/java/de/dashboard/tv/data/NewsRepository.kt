@@ -8,11 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NewsRepository {
 
-    private const val RSS_URL = "https://www.tagesschau.de/xml/rss2/"
+    private const val BASE_URL = "https://newsapi.org/v2/"
+    private const val API_KEY = "***"
 
     private val api: NewsApiService by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.rss2json.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsApiService::class.java)
@@ -20,15 +21,19 @@ object NewsRepository {
 
     suspend fun getTopHeadlines(): List<NewsItem> = withContext(Dispatchers.IO) {
         try {
-            val response = api.getFeed(RSS_URL)
-            response.items?.map { item ->
+            val response = api.getTopHeadlines(
+                country = "de",
+                category = "business",
+                apiKey = "***"
+            )
+            response.articles.map { article ->
                 NewsItem(
-                    headline = item.title ?: "",
-                    source = item.author?.takeIf { it.isNotBlank() } ?: "tagesschau",
-                    time = item.pubDate?.replace(" GMT", "")?.take(16) ?: "",
-                    category = item.categories?.firstOrNull() ?: "News"
+                    headline = article.title ?: "",
+                    source = article.source.name ?: "News",
+                    time = article.publishedAt?.take(16)?.replace("T", " ") ?: "",
+                    category = "Business"
                 )
-            } ?: emptyList()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()

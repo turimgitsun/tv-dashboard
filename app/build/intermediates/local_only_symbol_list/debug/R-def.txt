@@ -16,11 +16,13 @@ id btnManage
 id categoryText
 id changeText
 id conditionText
+id cryptoMap
 id emptyText
 id fragmentContainer
 id headlineText
 id iconText
 id nameText
+id navHeatmap
 id navNews
 id navPortfolio
 id navWeather
@@ -29,10 +31,12 @@ id priceText
 id progressBar
 id recyclerView
 id sourceText
+id stockMap
 id symbolText
 id tempText
 id timeText
 layout activity_main
+layout fragment_heatmap
 layout fragment_news
 layout fragment_portfolio
 layout fragment_stocks

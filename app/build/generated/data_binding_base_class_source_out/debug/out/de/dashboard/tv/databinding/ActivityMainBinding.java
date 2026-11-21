@@ -24,6 +24,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FrameLayout fragmentContainer;
 
   @NonNull
+  public final MaterialButton navHeatmap;
+
+  @NonNull
   public final MaterialButton navNews;
 
   @NonNull
@@ -33,10 +36,12 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton navWeather;
 
   private ActivityMainBinding(@NonNull LinearLayout rootView,
-      @NonNull FrameLayout fragmentContainer, @NonNull MaterialButton navNews,
-      @NonNull MaterialButton navPortfolio, @NonNull MaterialButton navWeather) {
+      @NonNull FrameLayout fragmentContainer, @NonNull MaterialButton navHeatmap,
+      @NonNull MaterialButton navNews, @NonNull MaterialButton navPortfolio,
+      @NonNull MaterialButton navWeather) {
     this.rootView = rootView;
     this.fragmentContainer = fragmentContainer;
+    this.navHeatmap = navHeatmap;
     this.navNews = navNews;
     this.navPortfolio = navPortfolio;
     this.navWeather = navWeather;
@@ -75,6 +80,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.navHeatmap;
+      MaterialButton navHeatmap = ViewBindings.findChildViewById(rootView, id);
+      if (navHeatmap == null) {
+        break missingId;
+      }
+
       id = R.id.navNews;
       MaterialButton navNews = ViewBindings.findChildViewById(rootView, id);
       if (navNews == null) {
@@ -93,8 +104,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((LinearLayout) rootView, fragmentContainer, navNews,
-          navPortfolio, navWeather);
+      return new ActivityMainBinding((LinearLayout) rootView, fragmentContainer, navHeatmap,
+          navNews, navPortfolio, navWeather);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
