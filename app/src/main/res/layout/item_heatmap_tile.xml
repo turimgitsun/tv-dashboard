@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="#1A1D24"
+    app:cardBackgroundColor="@color/surface"
     app:cardCornerRadius="14dp"
     app:cardElevation="0dp">
 
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="NVDA"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/textPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="120.50 $"
-            android:textColor="#9AA0AA"
+            android:textColor="@color/textSecondary"
             android:textSize="14sp" />
 
     </LinearLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
@@ -38,6 +37,14 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="USA / DE · zum vorherigen Handelsschluss"
+                android:textColor="@color/textSecondary"
+                android:textSize="11sp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/stockMap"
                 android:layout_width="match_parent"
@@ -59,10 +66,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="KRIPTO"
+                android:text="KRYPTO"
                 android:textColor="@color/accent"
                 android:textSize="22sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Top 12 · letzte 24 Stunden"
+                android:textColor="@color/textSecondary"
+                android:textSize="11sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cryptoMap"

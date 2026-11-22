@@ -1,97 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@color/bg">
 
+    <!-- Kopfzeile -->
     <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:background="@color/surface"
-        android:padding="20dp">
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
             android:text="@string/app_name"
             android:textColor="@color/textPrimary"
-            android:textSize="28sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navPortfolio"
-            android:layout_width="match_parent"
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/headerWeather"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/accent"
-            app:cornerRadius="12dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="Portfolio"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black"
+            android:layout_marginEnd="20dp"
+            android:text="Berlin  –"
+            android:textColor="@color/textSecondary"
             android:textSize="16sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/navHeatmap"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/headerDateTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/surface2"
-            app:cornerRadius="12dp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="Heatmap"
-            android:textAllCaps="false"
-            android:textColor="@color/textPrimary"
+            android:text="–"
+            android:textColor="@color/textSecondary"
             android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Horizontale Hauptnavigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/surface2"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/navWeather"
-            android:layout_width="match_parent"
+            android:id="@+id/navOverview"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
             android:backgroundTint="@color/surface2"
-            app:cornerRadius="12dp"
+            app:cornerRadius="10dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="Wetter"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Übersicht"
             android:textAllCaps="false"
             android:textColor="@color/textPrimary"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navMarkets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/surface2"
+            app:cornerRadius="10dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Märkte"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navWatchlist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/surface2"
+            app:cornerRadius="10dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Watchlist"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            android:textSize="14sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/navNews"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
             android:backgroundTint="@color/surface2"
-            app:cornerRadius="12dp"
+            app:cornerRadius="10dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="News"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Nachrichten"
             android:textAllCaps="false"
             android:textColor="@color/textPrimary"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/navSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/surface2"
+            app:cornerRadius="10dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="Einstellungen"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
+
+    <!-- Fußzeile -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/surface2"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/footerStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Datenstand: –"
+            android:textColor="@color/textSecondary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK Details · ◀ ▶ Navigieren"
+            android:textColor="@color/textSecondary"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </LinearLayout>

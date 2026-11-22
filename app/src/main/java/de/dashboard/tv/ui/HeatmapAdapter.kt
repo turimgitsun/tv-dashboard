@@ -54,16 +54,12 @@ class HeatmapAdapter(private var items: List<HeatmapItem>) :
             val changeStr = "${if (item.change24h >= 0) "▲" else "▼"} %.2f%%".format(change)
             changeText.text = changeStr
             changeText.setTextColor(
-                if (item.change24h >= 0) Color.parseColor("#00E5A0") else Color.parseColor("#FF5252")
+                if (item.change24h >= 0) Color.parseColor("#35D07F") else Color.parseColor("#E5484D")
             )
 
             // Background color based on change
-            val bgColor = if (item.change24h >= 0) {
-                Color.parseColor("#00E5A0").let { Color.argb(0x22.toInt(), (it shr 16) and 0xFF, (it shr 8) and 0xFF, it and 0xFF) }
-            } else {
-                Color.parseColor("#FF5252").let { Color.argb(0x22.toInt(), (it shr 16) and 0xFF, (it shr 8) and 0xFF, it and 0xFF) }
-            }
-            itemView.setBackgroundColor(bgColor)
+            val base = if (item.change24h >= 0) Color.parseColor("#35D07F") else Color.parseColor("#E5484D")
+            itemView.setBackgroundColor(Color.argb(0x22, (base shr 16) and 0xFF, (base shr 8) and 0xFF, base and 0xFF))
         }
     }
 }

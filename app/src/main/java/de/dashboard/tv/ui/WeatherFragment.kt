@@ -4,75 +4,50 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.dashboard.tv.R
-import de.dashboard.tv.models.WeatherData
+import de.dashboard.tv.data.WeatherRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class WeatherFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: WeatherAdapter
+    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
 
-        recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        adapter = WeatherAdapter(emptyList()) {}
-        recyclerView.adapter = adapter
+        val progress = view.findViewById<ProgressBar>(R.id.progressBar)
+        val icon = view.findViewById<TextView>(R.id.iconText)
+        val temp = view.findViewById<TextView>(R.id.tempText)
+        val condition = view.findViewById<TextView>(R.id.conditionText)
+        val updated = view.findViewById<TextView>(R.id.updatedText)
 
-        loadWeather()
-
-        return view
-    }
-
-    private fun loadWeather() {
-        val sample = listOf(
-            WeatherData("19:00", "18°", "☀️", "Sonnig", "0%"),
-            WeatherData("20:00", "17°", "☀️", "Sonnig", "0%"),
-            WeatherData("21:00", "16°", "🌙", "Klar", "0%"),
-            WeatherData("22:00", "15°", "🌙", "Klar", "5%"),
-            WeatherData("23:00", "14°", "🌙", "Klar", "5%")
-        )
-        adapter.submitList(sample)
-    }
-
-    class WeatherAdapter(
-        private val items: List<WeatherData>,
-        private val onClick: (WeatherData) -> Unit
-    ) : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
-
-        private var data = items
-
-        fun submitList(newItems: List<WeatherData>) {
-            data = newItems
-            notifyDataSetChanged()
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_weather, parent, false)
-            return WeatherViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-            holder.bind(data[position])
-        }
-
-        override fun getItemCount() = data.size
-
-        class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            fun bind(weather: WeatherData) {
-                itemView.findViewById<android.widget.TextView>(R.id.timeText).text = weather.time
-                itemView.findViewById<android.widget.TextView>(R.id.tempText).text = weather.temp
-                itemView.findViewById<android.widget.TextView>(R.id.iconText).text = weather.icon
-                itemView.findViewById<android.widget.TextView>(R.id.conditionText).text = weather.condition
-                itemView.findViewById<android.widget.TextView>(R.id.precipText).text = weather.precipitation
+        progress.visibility = View.VISIBLE
+        scope.launch {
+            val w = WeatherRepository.currentBerlin()
+            progress.visibility = View.GONE
+            if (w != null) {
+                icon.text = w.icon
+                temp.text = w.temp
+                condition.text = w.condition
+                updated.text = "Datenstand: " +
+                    SimpleDateFormat("HH:mm", Locale.GERMANY).format(Date())
+            } else {
+                temp.text = "–"
+                condition.text = "Wetter nicht verfügbar"
+                updated.text = "Bitte Internetverbindung prüfen"
             }
         }
+        return view
     }
 }

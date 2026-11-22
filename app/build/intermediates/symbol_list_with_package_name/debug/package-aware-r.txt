@@ -2024,6 +2024,7 @@ color mtrl_textinput_filled_box_default_background_color
 color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color negative
+color neutral
 color notification_action_color_filter
 color notification_icon_bg_color
 color positive
@@ -3113,6 +3114,10 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardChange
+id cardName
+id cardPrice
+id cardSymbol
 id carryVelocity
 id categoryText
 id center
@@ -3210,6 +3215,7 @@ id fitXY
 id fixed
 id flip
 id floating
+id footerStatus
 id forever
 id fragmentContainer
 id fragment_container_view_tag
@@ -3223,6 +3229,8 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id headerDateTime
+id headerWeather
 id header_title
 id headlineText
 id hideable
@@ -3319,10 +3327,11 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nameText
-id navHeatmap
+id navMarkets
 id navNews
-id navPortfolio
-id navWeather
+id navOverview
+id navSettings
+id navWatchlist
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3347,6 +3356,11 @@ id onInterceptTouchReturnSwipe
 id outline
 id outward
 id overshoot
+id overviewCrypto
+id overviewNewsHeadline
+id overviewNewsMeta
+id overviewStocks
+id overviewWatchlist
 id packed
 id parallax
 id parent
@@ -3512,6 +3526,7 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id updatedText
 id useLogo
 id vertical_only
 id view_offset_helper
@@ -3663,13 +3678,16 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_heatmap
 layout fragment_news
+layout fragment_overview
 layout fragment_portfolio
+layout fragment_settings
 layout fragment_stocks
 layout fragment_weather
 layout item_asset
 layout item_heatmap_tile
 layout item_news
 layout item_stock
+layout item_watchlist_card
 layout item_weather
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

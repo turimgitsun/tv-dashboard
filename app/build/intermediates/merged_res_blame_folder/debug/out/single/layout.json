@@ -1,50 +1,58 @@
 [
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/item_news.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/item_news.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_weather.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_weather.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_weather.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/fragment_weather.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_weather.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_weather.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_news.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/fragment_news.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/activity_main.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_news.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_news.xml"
     },
     {
         "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_heatmap_tile.xml",
         "source": "de.dashboard.tv.app-main-35:/layout/item_heatmap_tile.xml"
     },
     {
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_stocks.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_stocks.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_news.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_news.xml"
+    },
+    {
         "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_heatmap.xml",
         "source": "de.dashboard.tv.app-main-35:/layout/fragment_heatmap.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/item_asset.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/item_asset.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_overview.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_overview.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/item_stock.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/item_stock.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_asset.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_asset.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/activity_main.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/activity_main.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_stock.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_stock.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_stocks.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/fragment_stocks.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_settings.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_settings.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_portfolio.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/fragment_portfolio.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_portfolio.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_portfolio.xml"
     },
     {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/item_weather.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/item_weather.xml"
-    },
-    {
-        "merged": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_heatmap.xml",
-        "source": "/root/.gradle/daemon/8.1/de.dashboard.tv.app-main-35:/layout/fragment_heatmap.xml"
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_watchlist_card.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/item_watchlist_card.xml"
     }
 ]

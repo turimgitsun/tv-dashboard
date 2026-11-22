@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -21,30 +22,47 @@ public final class ActivityMainBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final TextView footerStatus;
+
+  @NonNull
   public final FrameLayout fragmentContainer;
 
   @NonNull
-  public final MaterialButton navHeatmap;
+  public final TextView headerDateTime;
+
+  @NonNull
+  public final TextView headerWeather;
+
+  @NonNull
+  public final MaterialButton navMarkets;
 
   @NonNull
   public final MaterialButton navNews;
 
   @NonNull
-  public final MaterialButton navPortfolio;
+  public final MaterialButton navOverview;
 
   @NonNull
-  public final MaterialButton navWeather;
+  public final MaterialButton navSettings;
 
-  private ActivityMainBinding(@NonNull LinearLayout rootView,
-      @NonNull FrameLayout fragmentContainer, @NonNull MaterialButton navHeatmap,
-      @NonNull MaterialButton navNews, @NonNull MaterialButton navPortfolio,
-      @NonNull MaterialButton navWeather) {
+  @NonNull
+  public final MaterialButton navWatchlist;
+
+  private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull TextView footerStatus,
+      @NonNull FrameLayout fragmentContainer, @NonNull TextView headerDateTime,
+      @NonNull TextView headerWeather, @NonNull MaterialButton navMarkets,
+      @NonNull MaterialButton navNews, @NonNull MaterialButton navOverview,
+      @NonNull MaterialButton navSettings, @NonNull MaterialButton navWatchlist) {
     this.rootView = rootView;
+    this.footerStatus = footerStatus;
     this.fragmentContainer = fragmentContainer;
-    this.navHeatmap = navHeatmap;
+    this.headerDateTime = headerDateTime;
+    this.headerWeather = headerWeather;
+    this.navMarkets = navMarkets;
     this.navNews = navNews;
-    this.navPortfolio = navPortfolio;
-    this.navWeather = navWeather;
+    this.navOverview = navOverview;
+    this.navSettings = navSettings;
+    this.navWatchlist = navWatchlist;
   }
 
   @Override
@@ -74,15 +92,33 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.footerStatus;
+      TextView footerStatus = ViewBindings.findChildViewById(rootView, id);
+      if (footerStatus == null) {
+        break missingId;
+      }
+
       id = R.id.fragmentContainer;
       FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, id);
       if (fragmentContainer == null) {
         break missingId;
       }
 
-      id = R.id.navHeatmap;
-      MaterialButton navHeatmap = ViewBindings.findChildViewById(rootView, id);
-      if (navHeatmap == null) {
+      id = R.id.headerDateTime;
+      TextView headerDateTime = ViewBindings.findChildViewById(rootView, id);
+      if (headerDateTime == null) {
+        break missingId;
+      }
+
+      id = R.id.headerWeather;
+      TextView headerWeather = ViewBindings.findChildViewById(rootView, id);
+      if (headerWeather == null) {
+        break missingId;
+      }
+
+      id = R.id.navMarkets;
+      MaterialButton navMarkets = ViewBindings.findChildViewById(rootView, id);
+      if (navMarkets == null) {
         break missingId;
       }
 
@@ -92,20 +128,27 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.navPortfolio;
-      MaterialButton navPortfolio = ViewBindings.findChildViewById(rootView, id);
-      if (navPortfolio == null) {
+      id = R.id.navOverview;
+      MaterialButton navOverview = ViewBindings.findChildViewById(rootView, id);
+      if (navOverview == null) {
         break missingId;
       }
 
-      id = R.id.navWeather;
-      MaterialButton navWeather = ViewBindings.findChildViewById(rootView, id);
-      if (navWeather == null) {
+      id = R.id.navSettings;
+      MaterialButton navSettings = ViewBindings.findChildViewById(rootView, id);
+      if (navSettings == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((LinearLayout) rootView, fragmentContainer, navHeatmap,
-          navNews, navPortfolio, navWeather);
+      id = R.id.navWatchlist;
+      MaterialButton navWatchlist = ViewBindings.findChildViewById(rootView, id);
+      if (navWatchlist == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((LinearLayout) rootView, footerStatus, fragmentContainer,
+          headerDateTime, headerWeather, navMarkets, navNews, navOverview, navSettings,
+          navWatchlist);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

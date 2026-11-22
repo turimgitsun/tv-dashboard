@@ -4,10 +4,11 @@ package de.dashboard.tv.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import de.dashboard.tv.R;
@@ -17,20 +18,37 @@ import java.lang.String;
 
 public final class FragmentWeatherBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
-  public final RecyclerView recyclerView;
+  public final TextView conditionText;
 
-  private FragmentWeatherBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView recyclerView) {
+  @NonNull
+  public final TextView iconText;
+
+  @NonNull
+  public final ProgressBar progressBar;
+
+  @NonNull
+  public final TextView tempText;
+
+  @NonNull
+  public final TextView updatedText;
+
+  private FragmentWeatherBinding(@NonNull FrameLayout rootView, @NonNull TextView conditionText,
+      @NonNull TextView iconText, @NonNull ProgressBar progressBar, @NonNull TextView tempText,
+      @NonNull TextView updatedText) {
     this.rootView = rootView;
-    this.recyclerView = recyclerView;
+    this.conditionText = conditionText;
+    this.iconText = iconText;
+    this.progressBar = progressBar;
+    this.tempText = tempText;
+    this.updatedText = updatedText;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -55,13 +73,38 @@ public final class FragmentWeatherBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.recyclerView;
-      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerView == null) {
+      id = R.id.conditionText;
+      TextView conditionText = ViewBindings.findChildViewById(rootView, id);
+      if (conditionText == null) {
         break missingId;
       }
 
-      return new FragmentWeatherBinding((ConstraintLayout) rootView, recyclerView);
+      id = R.id.iconText;
+      TextView iconText = ViewBindings.findChildViewById(rootView, id);
+      if (iconText == null) {
+        break missingId;
+      }
+
+      id = R.id.progressBar;
+      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar == null) {
+        break missingId;
+      }
+
+      id = R.id.tempText;
+      TextView tempText = ViewBindings.findChildViewById(rootView, id);
+      if (tempText == null) {
+        break missingId;
+      }
+
+      id = R.id.updatedText;
+      TextView updatedText = ViewBindings.findChildViewById(rootView, id);
+      if (updatedText == null) {
+        break missingId;
+      }
+
+      return new FragmentWeatherBinding((FrameLayout) rootView, conditionText, iconText,
+          progressBar, tempText, updatedText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
