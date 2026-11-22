@@ -34,6 +34,9 @@ id sourceText
 id stockMap
 id symbolText
 id tempText
+id tileChange
+id tilePrice
+id tileSymbol
 id timeText
 layout activity_main
 layout fragment_heatmap
@@ -42,6 +45,7 @@ layout fragment_portfolio
 layout fragment_stocks
 layout fragment_weather
 layout item_asset
+layout item_heatmap_tile
 layout item_news
 layout item_stock
 layout item_weather

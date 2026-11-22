@@ -12,14 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
-        <!-- Aktien Heatmap -->
+        <!-- AKTIEN -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -31,19 +33,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Aktien"
-                android:textColor="@color/textPrimary"
-                android:textSize="20sp"
+                android:text="AKTIEN"
+                android:textColor="@color/accent"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <de.dashboard.tv.ui.TreemapView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/stockMap"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp" />
         </LinearLayout>
 
-        <!-- Crypto Heatmap -->
+        <!-- KRIPTO -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -55,16 +59,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Crypto"
-                android:textColor="@color/textPrimary"
-                android:textSize="20sp"
+                android:text="KRIPTO"
+                android:textColor="@color/accent"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <de.dashboard.tv.ui.TreemapView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cryptoMap"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp" />
         </LinearLayout>
 
     </LinearLayout>

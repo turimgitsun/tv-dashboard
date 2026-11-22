@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.dashboard.tv.R
 import de.dashboard.tv.data.HeatmapRepository
 import kotlinx.coroutines.CoroutineScope
@@ -15,8 +17,8 @@ import kotlinx.coroutines.launch
 
 class HeatmapFragment : Fragment() {
 
-    private lateinit var stockMap: TreemapView
-    private lateinit var cryptoMap: TreemapView
+    private lateinit var stockAdapter: HeatmapAdapter
+    private lateinit var cryptoAdapter: HeatmapAdapter
     private lateinit var progressBar: ProgressBar
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
@@ -25,9 +27,17 @@ class HeatmapFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_heatmap, container, false)
 
-        stockMap = view.findViewById(R.id.stockMap)
-        cryptoMap = view.findViewById(R.id.cryptoMap)
         progressBar = view.findViewById(R.id.progressBar)
+
+        val stockRv = view.findViewById<RecyclerView>(R.id.stockMap)
+        stockRv.layoutManager = LinearLayoutManager(requireContext())
+        stockAdapter = HeatmapAdapter(emptyList())
+        stockRv.adapter = stockAdapter
+
+        val cryptoRv = view.findViewById<RecyclerView>(R.id.cryptoMap)
+        cryptoRv.layoutManager = LinearLayoutManager(requireContext())
+        cryptoAdapter = HeatmapAdapter(emptyList())
+        cryptoRv.adapter = cryptoAdapter
 
         load()
         return view
@@ -42,8 +52,8 @@ class HeatmapFragment : Fragment() {
 
             progressBar.visibility = View.GONE
 
-            stockMap.setData(stocks)
-            cryptoMap.setData(crypto)
+            stockAdapter.submitList(stocks)
+            cryptoAdapter.submitList(crypto)
         }
     }
 }

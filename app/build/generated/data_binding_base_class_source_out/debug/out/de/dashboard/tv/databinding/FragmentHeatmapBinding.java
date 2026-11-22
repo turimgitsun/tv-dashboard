@@ -8,10 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import de.dashboard.tv.R;
-import de.dashboard.tv.ui.TreemapView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,16 +21,16 @@ public final class FragmentHeatmapBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TreemapView cryptoMap;
+  public final RecyclerView cryptoMap;
 
   @NonNull
   public final ProgressBar progressBar;
 
   @NonNull
-  public final TreemapView stockMap;
+  public final RecyclerView stockMap;
 
-  private FragmentHeatmapBinding(@NonNull LinearLayout rootView, @NonNull TreemapView cryptoMap,
-      @NonNull ProgressBar progressBar, @NonNull TreemapView stockMap) {
+  private FragmentHeatmapBinding(@NonNull LinearLayout rootView, @NonNull RecyclerView cryptoMap,
+      @NonNull ProgressBar progressBar, @NonNull RecyclerView stockMap) {
     this.rootView = rootView;
     this.cryptoMap = cryptoMap;
     this.progressBar = progressBar;
@@ -65,7 +65,7 @@ public final class FragmentHeatmapBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.cryptoMap;
-      TreemapView cryptoMap = ViewBindings.findChildViewById(rootView, id);
+      RecyclerView cryptoMap = ViewBindings.findChildViewById(rootView, id);
       if (cryptoMap == null) {
         break missingId;
       }
@@ -77,7 +77,7 @@ public final class FragmentHeatmapBinding implements ViewBinding {
       }
 
       id = R.id.stockMap;
-      TreemapView stockMap = ViewBindings.findChildViewById(rootView, id);
+      RecyclerView stockMap = ViewBindings.findChildViewById(rootView, id);
       if (stockMap == null) {
         break missingId;
       }
