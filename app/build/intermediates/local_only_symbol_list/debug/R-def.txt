@@ -14,6 +14,7 @@ color textSecondary
 drawable banner
 drawable ic_launcher_foreground
 id btnManage
+id btnWatchlistToggle
 id cardChange
 id cardName
 id cardPrice
@@ -22,9 +23,16 @@ id categoryText
 id changeText
 id conditionText
 id cryptoMap
+id detailsChange
+id detailsMeta
+id detailsName
+id detailsPeriod
+id detailsPrice
+id detailsSymbol
 id emptyText
 id footerStatus
 id fragmentContainer
+id fullscreenMap
 id headerDateTime
 id headerWeather
 id headlineText
@@ -54,7 +62,9 @@ id tileSymbol
 id timeText
 id updatedText
 layout activity_main
+layout fragment_asset_details
 layout fragment_heatmap
+layout fragment_heatmap_fullscreen
 layout fragment_news
 layout fragment_overview
 layout fragment_portfolio

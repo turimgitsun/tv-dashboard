@@ -4,6 +4,10 @@
         "source": "de.dashboard.tv.app-main-35:/layout/fragment_weather.xml"
     },
     {
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_asset_details.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_asset_details.xml"
+    },
+    {
         "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_weather.xml",
         "source": "de.dashboard.tv.app-main-35:/layout/item_weather.xml"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_stocks.xml",
         "source": "de.dashboard.tv.app-main-35:/layout/fragment_stocks.xml"
+    },
+    {
+        "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/fragment_heatmap_fullscreen.xml",
+        "source": "de.dashboard.tv.app-main-35:/layout/fragment_heatmap_fullscreen.xml"
     },
     {
         "merged": "de.dashboard.tv.app-mergeDebugResources-32:/layout/item_news.xml",

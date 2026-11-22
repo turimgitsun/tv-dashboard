@@ -51,6 +51,19 @@ class OverviewFragment : Fragment() {
         watchAdapter = WatchlistCardAdapter(emptyList())
         watchRv.adapter = watchAdapter
 
+        stocksRv.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER) { openFullscreen("stocks"); true } else { false }
+        }
+        cryptoRv.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER) { openFullscreen("crypto"); true } else { false }
+        }
+        watchRv.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == android.view.KeyEvent.KEYCODE_DPAD_CENTER) {
+                parentFragmentManager.beginTransaction().replace(R.id.fragmentContainer, PortfolioFragment()).addToBackStack(null).commit()
+                true
+            } else { false }
+        }
+
         load()
         return view
     }
@@ -127,5 +140,13 @@ class OverviewFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun openFullscreen(kind: String) {
+        val next = HeatmapFullscreenFragment.newInstance(kind)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, next)
+            .addToBackStack(null)
+            .commit()
     }
 }
